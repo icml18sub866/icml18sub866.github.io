@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ICML 2018 Submission 866</title>
+		  <script type="text/javascript" async
+  		   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async>
+		  </script>
+    </head>
+    <body>
+        <h1>ICML 2018 Submission 866</h1>
+        <h2>Time-Series Generation with a SIN: Scattering Inverse Network</h2>
+        <p>This page displays audio synthesis results for the submission:
+        Figures <a href="#fig3">3</a>, <a href="#fig4">4</a>, <a href="#fig5">5</a>, <a href="#fig6">6</a> of the paper.
+        Supplementary results contain quantative results: we study the <a href="#loss">loss</a> function and
+        the <a href="#repr">impact of the representation \( S_J(X) \) </a>.
+        Best seen with Chrome browser.</p>
+        <h3>Audio synthesis results</h3>
+        <a name="fig3">
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig3/train_5.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig3/train_5_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig3/train_5_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig3/train_6.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig3/train_6_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig3/train_6_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig3/train_7.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig3/train_7_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig3/train_7_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig3/train_8.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig3/train_8_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig3/train_8_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig3/train_9.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig3/train_9_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig3/train_9_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <p><b>Figure 3</b> Training reconstruction results with the SIN on the TIMIT data-set.
+        The images correspond to time-average scalograms \(S_L x\). The plots correspond to waveforms.
+        Left: groundtruth. Right: scattering network reconstruction.
+        Each time series corresponds to 2256 time samples (~ 0.5 s)</p>
+
+        <a name="fig4">
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig4/test_5.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig4/test_5_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig4/test_5_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig4/test_6.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig4/test_6_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig4/test_6_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig4/test_7.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig4/test_7_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig4/test_7_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig4/test_8.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig4/test_8_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig4/test_8_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig4/test_9.png" width=75%></img>
+            <br>
+            <audio src="./figures/fig4/test_9_groundtruth.wav" controls></audio>
+            <audio src="./figures/fig4/test_9_reconstructed_J10_Loss_S_L.wav" controls></audio>
+        </div>
+        <p><b>Figure 4</b> Generalization on test examples from the TIMIT data-set.
+        From left to right: groundtruth, SIN reconstruction.</p>
+
+        <a name="fig5">
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig5/J10_generation_example_0.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig5/J10_generation_example_0.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig5/J10_generation_example_2.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig5/J10_generation_example_2.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig5/J6_generation_example_0.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig5/J6_generation_example_0.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig5/J6_generation_example_2.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig5/J6_generation_example_2.wav" controls></audio>
+        </div>
+        <p><b>Figure 5.</b> Generation from Gaussian white noise by inverting \(S_J\) on the TIMIT data-set.
+        Top 2 examples: computed with \(J = 10\). Bottom 2 examples: with \(J = 6\).
+        As the scale \(2^J\) increases, \(S_J(X)\) becomes more Gaussian and the model is more realistic.
+        The duration of each time series is 3.3 seconds.</p>
+        
+        <a name="fig6">
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig6/groundtruth_0.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig6/groundtruth_0.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig6/generation_example_0.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig6/generation_example_0.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig6/generation_example_2.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig6/generation_example_2.wav" controls></audio>
+        </div>
+        <div style="width: 100%; float:left">
+            <img src="./figures/fig6/generation_example_4.png" width=50%></img>
+            <br>
+            <audio src="./figures/fig6/generation_example_4.wav" controls></audio>
+        </div>
+        <p><b>Figure 6.</b> Generation from Gaussian white noise by inverting \(S_J\) on the Beethoven data-set.
+        Top example: groundtruth time series from the training set.
+        Bottom 3 examples: generated examples with J=10.
+        The duration of each time series is 3.3 seconds.</p>
+
+
+        <a name="loss">
+        <h3>Impact of the loss function on the reconstruction</h3>
+        <p>To study the impact of the loss function used to train the network \(G\), we compare the reconstruction when \(G\) is trained with the proposed perceptual metric \( \| S_L x_i - S_L G(S_J x_i) \|_1 \)
+        and with the MSE metric\( \| x_i - G(S_J x_i) \|_2^2 \).</p>
+        <table>
+            <tr>
+                <th>Dataset</th>
+                <th>
+                    Groundtruth \(x_i\)
+                </th>
+                <th>Reconstruction \(G S_J x_i\)<br>\(G\) trained with MSE loss</th>
+                <th>Reconstruction \(G S_J x_i\)<br>\(G\) trained with perceptual loss</th>
+            </tr>
+            <tr>
+                <th>TIMIT<br>(Test)</th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/mse_vs_perceptual/timit/mse/inverse_problem_testing_groundtruth_50.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/mse_vs_perceptual/timit/mse/inverse_problem_testing_groundtruth_50.wav" controls></audio>
+                    </div>
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/mse_vs_perceptual/timit/mse/inverse_problem_testing_recovered_50.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/mse_vs_perceptual/timit/mse/inverse_problem_testing_recovered_50.wav" controls></audio>
+                    </div>                    
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/mse_vs_perceptual/timit/perceptual/inverse_problem_testing_recovered_50.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/mse_vs_perceptual/timit/perceptual/inverse_problem_testing_recovered_50.wav" controls></audio>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>Beethoven<br>(Test)</th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/mse_vs_perceptual/beethoven/mse/inverse_problem_testing_groundtruth_10.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/mse_vs_perceptual/beethoven/mse/inverse_problem_testing_groundtruth_10.wav" controls></audio>
+                    </div>
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/mse_vs_perceptual/beethoven/mse/inverse_problem_testing_recovered_10.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/mse_vs_perceptual/beethoven/mse/inverse_problem_testing_recovered_10.wav" controls></audio>
+                    </div>                    
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/mse_vs_perceptual/beethoven/perceptual/inverse_problem_testing_recovered_10.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/mse_vs_perceptual/beethoven/perceptual/inverse_problem_testing_recovered_10.wav" controls></audio>
+                    </div>
+                </th>
+            </tr>
+        </table>
+        <p><b>Figure A.1</b> Reconstruction results from the SIN on the TIMIT and Beethoven datasets.
+        Notice the clear improvement in quality and generalization achieved with the proposed perceptual metric \( \| S_L x_i - S_L G(S_J x_i) \|_1 \)
+        over the MSE metric\( \| x_i - G(S_J x_i) \|_2^2 \).</p>
+        <table border='1'>
+            <tr>
+                <th>
+                    Dataset
+                </th>
+                <th>
+                    Network trained with MSE metric
+                </th>
+                <th>Network trained with perceptual metric</th>
+            </tr>
+            <tr>
+                <th>
+                    TIMIT<br>(Train)
+                </th>
+                <th>
+                    0.65
+                </th>
+                <th>
+                    0.22
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    TIMIT<br>(Test)
+                </th>
+                <th>
+                    0.84
+                </th>
+                <th>
+                    0.50
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Beethoven<br>(Train)
+                </th>
+                <th>
+                    0.64
+                </th>
+                <th>
+                    0.14
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Beethoven<br>(Test)
+                </th>
+                <th>
+                    0.77
+                </th>
+                <th>
+                    0.34
+                </th>
+            </tr>
+        </table>
+        <p><b>Table A.1</b> Reconstruction losses on both datasets, measured via the perceptual metric: it is relative, so that a value close to 1 has 100% error, and a value close to 0 0% error.
+        In both cases, the SIN \(G\) was trained with the same hyperparameters, except for the reconstruction metric. The perceptual metric brings a clear improvement.</p>
+        
+        <a name="repr">
+        <h3>Impact of the scattering representation \( S_J(X) \) on the reconstruction</h3>
+        <p>To study the impact of the scattering representation \(S_J(X)\) on the reconstruction, we consider the ablation of the second-order terms in this representation.
+        Because of the temporal averaging with \(\phi_J\), this ablation is expected to yield reconstruction of lower quality.
+        This is demonstrated quantitatively and qualitatively on the TIMIT and Beethoven datasets.</p>
+        
+        <table>
+            <tr>
+                <th>Dataset</th>
+                <th>
+                    Groundtruth
+                </th>
+                <th>Reconstruction from ablated scattering<br>(no second order)</th>
+                <th>Reconstruction from full scattering</th>
+            </tr>
+            <tr>
+                <th>TIMIT<br>(Test)</th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/ablation_representation/timit/U2/inverse_problem_testing_groundtruth_0.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/ablation_representation/timit/U2/inverse_problem_testing_groundtruth_0.wav" controls></audio>
+                    </div>
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/ablation_representation/timit/U1/inverse_problem_testing_recovered_0.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/ablation_representation/timit/U1/inverse_problem_testing_recovered_0.wav" controls></audio>
+                    </div>                    
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/ablation_representation/timit/U2/inverse_problem_testing_recovered_0.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/ablation_representation/timit/U2/inverse_problem_testing_recovered_0.wav" controls></audio>
+                    </div>                    
+                </th>
+            </tr>
+            <tr>
+                <th>Beethoven<br>(Test)</th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/ablation_representation/beethoven/U2/inverse_problem_testing_groundtruth_70.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/ablation_representation/beethoven/U2/inverse_problem_testing_groundtruth_70.wav" controls></audio>
+                    </div>
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/ablation_representation/beethoven/U1/inverse_problem_testing_recovered_70.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/ablation_representation/beethoven/U1/inverse_problem_testing_recovered_70.wav" controls></audio>
+                    </div>                    
+                </th>
+                <th>
+                    <div style="width: 100%; float:left">
+                        <img src="./figures/ablation_representation/beethoven/U2/inverse_problem_testing_recovered_70.png" width=50%></img>
+                        <br>
+                        <audio src="./figures/ablation_representation/beethoven/U2/inverse_problem_testing_recovered_70.wav" controls></audio>
+                    </div>                    
+                </th>
+            </tr>
+        </table>
+        <p><b>Figure A.2</b> Reconstruction from an ablated scattering (no second order terms) and from a full scattering. Notice the improvement in quality,
+        notably for the Beethoven dataset: the second-order terms allow to recover the temporal dynamics within the dominating frequency.</p>
+        
+        <table border='1'>
+            <tr>
+                <th>
+                    Dataset
+                </th>
+                <th>
+                    Network trained with ablated scattering<br>(no second order)
+                </th>
+                <th>Network trained with full scattering</th>
+            </tr>
+            <tr>
+                <th>
+                    TIMIT<br>(Train)
+                </th>
+                <th>
+                    0.37
+                </th>
+                <th>
+                    0.22
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    TIMIT<br>(Test)
+                </th>
+                <th>
+                    0.64
+                </th>
+                <th>
+                    0.50
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Beethoven<br>(Train)
+                </th>
+                <th>
+                    0.28
+                </th>
+                <th>
+                    0.14
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Beethoven<br>(Test)
+                </th>
+                <th>
+                    0.39
+                </th>
+                <th>
+                    0.34
+                </th>
+            </tr>
+        </table>
+        <p><b>Table A.2</b> Reconstruction losses on both datasets, measured via the perceptual metric (lower is better).
+        In both cases, the network was trained with the perceptual metric.
+        The second-order terms bring a clear quantitative improvement.</p>        
+        </table>
+        
+    </body>
+</html>
